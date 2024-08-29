@@ -1,0 +1,20 @@
+{
+    "name": "nw/web-service",
+    "description": "Test work",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nw\\WebService\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aleksandr Gorbatov",
+            "email": "hkrtrk@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    }
+}
