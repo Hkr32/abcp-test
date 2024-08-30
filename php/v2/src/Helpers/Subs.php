@@ -11,22 +11,22 @@ class Subs
         'complaintEmployeeEmailBody' => '
             Complait id: COMPLAINT_ID. Complait number: COMPLAINT_NUMBER.
             Creator id: CREATOR_ID. Creator name: CREATOR_NAME.
-            Expert id: EXPERT_ID. Expert name: EXPERT_NAME. 
-            Client id: CLIENT_ID. Client name: CLIENT_NAME. 
-            Consumption id: CONSUMPTION_ID. Consumption name: CONSUMPTION_NAME. 
-            Agreement number: AGREEMENT_NUMBER. 
-            Date: DATE. 
+            Expert id: EXPERT_ID. Expert name: EXPERT_NAME.
+            Client id: CLIENT_ID. Client name: CLIENT_NAME.
+            Consumption id: CONSUMPTION_ID. Consumption name: CONSUMPTION_NAME.
+            Agreement number: AGREEMENT_NUMBER.
+            Date: DATE.
             Differences: DIFFERENCES.
         ',
         'complaintClientEmailSubject' => 'Agreement number: AGREEMENT_NUMBER',
         'complaintClientEmailBody' => '
             Complait id: COMPLAINT_ID. Complait number: COMPLAINT_NUMBER.
             Creator id: CREATOR_ID. Creator name: CREATOR_NAME.
-            Expert id: EXPERT_ID. Expert name: EXPERT_NAME. 
-            Client id: CLIENT_ID. Client name: CLIENT_NAME. 
-            Consumption id: CONSUMPTION_ID. Consumption name: CONSUMPTION_NAME. 
-            Agreement number: AGREEMENT_NUMBER. 
-            Date: DATE. 
+            Expert id: EXPERT_ID. Expert name: EXPERT_NAME.
+            Client id: CLIENT_ID. Client name: CLIENT_NAME.
+            Consumption id: CONSUMPTION_ID. Consumption name: CONSUMPTION_NAME.
+            Agreement number: AGREEMENT_NUMBER.
+            Date: DATE.
             Differences: DIFFERENCES.
         ',
     ];
@@ -35,7 +35,7 @@ class Subs
     {
         $shouldReplace = [];
         foreach ($params as $key => $param) {
-            $shouldReplace[':'.$key] = $param;
+            $shouldReplace[$key] = $param;
         }
 
         return strtr(self::$differences[$lineKey], $shouldReplace);
