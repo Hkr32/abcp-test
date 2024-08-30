@@ -3,8 +3,6 @@
 namespace Nw\WebService;
 
 use Nw\WebService\References\Operations\TsReturnOperation;
-use Nw\WebService\References\Operations\Notifications\Status;
-use Nw\WebService\References\Staff\Contractor;
 
 class App
 {

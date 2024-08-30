@@ -2,7 +2,6 @@
 
 namespace Nw\WebService\References\Operations;
 
-use Nw\WebService\Helpers\Subs;
 use Nw\WebService\References\Operations\Notifications\MessagesClient;
 use Nw\WebService\References\Operations\Notifications\NotificationEvents;
 use Nw\WebService\References\Operations\Notifications\Status;
@@ -10,6 +9,7 @@ use NW\WebService\References\Staff\Contractor;
 use Nw\WebService\References\Staff\Employee;
 use Nw\WebService\References\Staff\Seller;
 use NW\WebService\References\Operations\Notifications\NotificationManager;
+use function Nw\WebService\Functions\__;
 
 class TsReturnOperation extends ReferencesOperation
 {
@@ -80,9 +80,9 @@ class TsReturnOperation extends ReferencesOperation
         $differences = '';
         // Получаем различия в зависимости от типа уведомления (Новое уведомление или статус изменился)
         if ($notificationType === self::TYPE_NEW) {
-            $differences = Subs::__('NewPositionAdded', ['RESELLER_ID' => $resellerId]);
+            $differences = __('NewPositionAdded', ['RESELLER_ID' => $resellerId]);
         } elseif ($notificationType === self::TYPE_CHANGE && !empty($request['differences'])) {
-            $differences = Subs::__('PositionStatusHasChanged', [
+            $differences = __('PositionStatusHasChanged', [
                 'RESELLER_ID' => $resellerId,
                 'FROM' => Status::getName((int) $request['differences']['from']),
                 'TO' => Status::getName((int) $request['differences']['to']),
@@ -124,8 +124,8 @@ class TsReturnOperation extends ReferencesOperation
                     0 => [ // MessageTypes::EMAIL
                         'emailFrom' => $emailFrom,
                         'emailTo' => $email,
-                        'subject' => Subs::__('complaintEmployeeEmailSubject', $templateData),
-                        'message' => Subs::__('complaintEmployeeEmailBody', $templateData),
+                        'subject' => __('complaintEmployeeEmailSubject', $templateData),
+                        'message' => __('complaintEmployeeEmailBody', $templateData),
                     ],
                 ], $resellerId, NotificationEvents::CHANGE_RETURN_STATUS);
                 $result['notificationEmployeeByEmail'] = true;
@@ -139,8 +139,8 @@ class TsReturnOperation extends ReferencesOperation
                     0 => [ // MessageTypes::EMAIL
                         'emailFrom' => $emailFrom,
                         'emailTo' => $client->email,
-                        'subject' => Subs::__('complaintClientEmailSubject', $templateData),
-                        'message' => Subs::__('complaintClientEmailBody', $templateData),
+                        'subject' => __('complaintClientEmailSubject', $templateData),
+                        'message' => __('complaintClientEmailBody', $templateData),
                     ],
                 ],
                     $resellerId,

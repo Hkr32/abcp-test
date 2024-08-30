@@ -1,10 +1,10 @@
 <?php
 
-namespace Nw\WebService\Helpers;
+namespace Nw\WebService\Functions;
 
-class Subs
+function __(string $lineKey, array $params): string
 {
-    private static array $differences = [
+    $differences = [
         'NewPositionAdded' => 'Реселлер: RESELLER_ID. Была добавлена новая позиция.',
         'PositionStatusHasChanged' => 'Реселлер: RESELLER_ID. Позиция была изменена с FROM на TO.',
         'complaintEmployeeEmailSubject' => 'Complaint id: COMPLAINT_ID. Complaint number: COMPLAINT_NUMBER',
@@ -30,14 +30,10 @@ class Subs
             Differences: DIFFERENCES.
         ',
     ];
-
-    public static function __(string $lineKey, array $params)
-    {
-        $shouldReplace = [];
-        foreach ($params as $key => $param) {
-            $shouldReplace[$key] = $param;
-        }
-
-        return strtr(self::$differences[$lineKey], $shouldReplace);
+    $shouldReplace = [];
+    foreach ($params as $key => $param) {
+        $shouldReplace[$key] = $param;
     }
+
+    return strtr($differences[$lineKey], $shouldReplace);
 }
